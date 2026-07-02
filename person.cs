@@ -26,7 +26,10 @@ namespace first_project
             return $"Име : {Name}, Възраст: {Age}, Заплата: {Salary:F2}";
         }
 
-
+        public string ToFileRow()
+                    {
+            return $"Име: {Name};Възраст: {Age}; Заплата : {Salary:F2}";
+        }
 
 
 
