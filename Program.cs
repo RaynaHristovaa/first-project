@@ -61,10 +61,32 @@
                         Console.WriteLine();
                         break;
 
-                        
+                        case "3":
+                        Console.WriteLine("Въведете името на човека за промяна на заолатата:");
+                        string nameToUpdate = Console.ReadLine();
+                        person personToUpdate = null;
+                        foreach (person p in people)
+                        {
+                            if (p.Name.Equals ( nameToUpdate, StringComparison.OrdinalIgnoreCase))
+                            {
+                                personToUpdate = p;
+                                break;
+                            }
+                        }
+                        if (personToUpdate != null)
+                        {
+                            Console.WriteLine($"Сегашната заплата на {personToUpdate.Name}: {personToUpdate.Salary:F2}.Нова заплата");
+                            double newSalary = double.Parse(Console.ReadLine());
+                            personToUpdate.Salary = newSalary;
+                            SavePeopleToFile(people);
+                            Console.WriteLine("Заплатата беше успешно обновена във файла");
 
-
-
+                        }
+                        else
+                        {
+                            Console.WriteLine("Човек с това име не е намерен.");
+                        }
+                        break;
                 }
 
             }
