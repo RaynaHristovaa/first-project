@@ -31,7 +31,18 @@ namespace first_project
             return $"Име: {Name};Възраст: {Age}; Заплата : {Salary:F2}";
         }
 
-
+        public static person FromFileRow(string row)
+        {
+            string[] parts = row.Split(';');
+            if (parts.Length == 3)
+            {
+                string name = parts[0];
+                int age= int.Parse(parts[1]);
+                double salary = double.Parse(parts[2]);
+                return new person(name, age, salary);
+            }
+            return null;
+        }
 
 
 
