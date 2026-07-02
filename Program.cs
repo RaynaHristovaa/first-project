@@ -22,11 +22,34 @@
                 Console.WriteLine("Избор: ");
                 string choice = Console.ReadLine();
                 Console.WriteLine();
+                switch (choice)
+                {
+                    case "1":
+                        Console.WriteLine("Въведи име:");
+                        string name = Console.ReadLine();
+
+                        Console.WriteLine("Въведете възраст");
+                        int age = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Въведете заплатата");
+                        double salary = double.Parse(Console.ReadLine());
+
+                        person newPesron = new person(name, age, salary);
+                        people.Add(newPesron);
+
+
+                        SavePeopleToFile(people);
+                        Console.WriteLine("Успешно добавен нов запис!");
+                        Console.WriteLine();
+                        break;
+                }
+
             }
         }
 
         static List<person> LoadPeopleFromFile()
         {
+
             List<person> people = new List<person>();
 
             if (!File.Exists(FilePath))
@@ -42,31 +65,16 @@
                 people.Add(person);
             }
             return people;
+        }
 
-
-            static void SavePeopleToFile(List<person> people)
+        static void SavePeopleToFile(List<person> people)
+        {
+            List<string> rows = new List<string>();
+            foreach (person p in people)
             {
-                List<string> rows = new List<string>();
-                foreach (person p in people)
-                {
-                    rows.Add(p.ToFileRow());
-                }
-                File.WriteAllLines(FilePath, rows);
+                rows.Add(p.ToFileRow());
             }
-          
-                        
-                
-
-
-
-
-
-
-
-
-
-
-
-            }
+            File.WriteAllLines(FilePath, rows);
+        }
     }
 }
