@@ -87,6 +87,16 @@
                             Console.WriteLine("Човек с това име не е намерен.");
                         }
                         break;
+
+                        case "4":
+                        break;
+                        case "5":
+                        running = false;
+                        Console.WriteLine("Изход от програмата.");
+                        break;
+                        default:
+                        Console.WriteLine("Невалиден избор. Моля , опитайте отново");
+                        break;
                 }
 
             }
